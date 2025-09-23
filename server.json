@@ -18,6 +18,16 @@
             "price": 6000,
             "createdAt": "2025-10-23T14:16:59.183Z"
 
+        },
+
+        {
+            "id": 3,
+            "description": "Mensalidade",
+            "type": "outcome",
+            "category": "Escola",
+            "price": 6000,
+            "createdAt": "2025-11-23T14:16:59.183Z"
+
         }
     ]
 }

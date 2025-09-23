@@ -1,7 +1,35 @@
+import { useContext } from "react";
 import { SummaryCard, SummaryContainer } from "./styles";
 import { ArrowCircleDown, ArrowCircleUp, CurrencyDollar } from "phosphor-react"
+import { TransactionsContext } from "../../contexts/TransactionsContext";
+import { priceFormatter } from "../../utils/formatter";
 
 export function Summary() {
+
+    const { transactions } = useContext(TransactionsContext);
+
+
+    //Reduce irá reduzir todo o conteudo da variavel transactions para um formato escolhido de income, outcome e total. Podendo assim acessar esses resultados depois
+    const summary = transactions.reduce(
+        (acc, transaction) => {
+            if(transaction.type === 'income') {
+                acc.income += transaction.price;
+                acc.total += transaction.price;
+            } else {
+                acc.outcome += transaction.price;
+                acc.total -= transaction.price
+            }
+
+
+            return acc
+        },
+
+        {
+            income: 0,
+            outcome: 0,
+            total: 0
+        }
+    )
 
     return(
         <SummaryContainer>
@@ -11,7 +39,7 @@ export function Summary() {
                     <ArrowCircleUp size={32} color="#00b37e" />
                 </header>
 
-                <strong> R$ 17.400,00</strong>
+                <strong> {priceFormatter.format(summary.income)}</strong>
             </SummaryCard>
 
             <SummaryCard>
@@ -20,7 +48,7 @@ export function Summary() {
                     <ArrowCircleDown size={32} color="#F75A68" />
                 </header>
 
-                <strong> R$ 1.259,00</strong>
+                <strong>{priceFormatter.format(summary.outcome)}</strong>
             </SummaryCard>
 
             <SummaryCard variant="green">
@@ -29,7 +57,7 @@ export function Summary() {
                     <CurrencyDollar size={32} color="#fff" />
                 </header>
 
-                <strong> R$ 16.141,00</strong>
+                <strong> {priceFormatter.format(summary.total)}</strong>
             </SummaryCard>
         </SummaryContainer>
     )
