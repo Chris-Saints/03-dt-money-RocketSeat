@@ -63,6 +63,14 @@
       "type": "income",
       "createdAt": "2025-09-24T01:05:17.823Z",
       "id": 8
+    },
+    {
+      "description": "Festa",
+      "price": 5000,
+      "category": "Diversão",
+      "type": "outcome",
+      "createdAt": "2025-09-24T16:28:54.001Z",
+      "id": 9
     }
   ]
 }
