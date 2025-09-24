@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState, type ReactNode } from "react";
+import { api } from '../../lib/axios'
 
 interface Transaction {
     id: number;
@@ -35,16 +36,13 @@ export function TransactionsProvider({children}: TransactionsProviderProps) {
     
         //Uma função assincrona para recuperar os dados que estão na back-end e transforma-los em uma variavel. Depois adicionar eles ao useState que guarda as informações das transações
         async function fetchTransactions(query?: string) {
-            const url = new URL('http://localhost:3000/transactions');
-
-            if(query) {
-                url.searchParams.append('q', query);
-            }
-
-            const response = await fetch(url)
-            const data = await response.json();
+            const response = await api.get('transactions', {
+                params: {
+                    q: query,
+                }
+            })
     
-            setTransactions(data)
+            setTransactions(response.data)
             
         }
     
