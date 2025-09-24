@@ -10,7 +10,6 @@
     "lint": "eslint src --ext .tsx, .ts",
     "lint:fix": "eslint src --ext .tsx, .ts --fix",
     "preview": "vite preview"
-    
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -21,7 +20,9 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.63.0",
+    "scheduler": "^0.26.0",
     "styled-components": "^6.1.19",
+    "use-context-selector": "^2.0.0",
     "zod": "^4.1.11"
   },
   "devDependencies": {

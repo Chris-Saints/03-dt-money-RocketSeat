@@ -4,8 +4,8 @@ import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react'
 import * as z from 'zod';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useContext } from 'react';
 import { TransactionsContext } from '../../contexts/TransactionsContext';
+import { useContextSelector } from 'use-context-selector';
 
 const newTransactionFormSchema = z.object({
     description: z.string(),
@@ -19,7 +19,9 @@ type NewTransactionFormInputs = z.infer<typeof newTransactionFormSchema>
 //O processo é Criar um objeto com o zod ditando como deve ser e quais informações deve ter. Depois criar um Type dessa variavel e depois trazer as propriedades do use form com zodResolver e criar uma função onde ele puxa todas as informacoes salvando elas com o register e podendo ser acessadas no return da função
 
 export function NewTransactionModal() {
-    const { createTransaction } = useContext(TransactionsContext)
+    const createTransaction = useContextSelector(TransactionsContext, (context) => {
+        return context.createTransaction;
+    })
 
     const {
         control, 

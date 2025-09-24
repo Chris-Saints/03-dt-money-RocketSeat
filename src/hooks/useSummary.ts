@@ -1,8 +1,10 @@
-import { useContext } from "react";
 import { TransactionsContext } from "../contexts/TransactionsContext";
+import { useContextSelector } from "use-context-selector";
 
 export function UseSummary() {
-     const { transactions } = useContext(TransactionsContext);
+     const transactions = useContextSelector(TransactionsContext, (context) => {
+        return context.transactions
+     });
 
 
     //Reduce irá reduzir todo o conteudo da variavel transactions para um formato escolhido de income, outcome e total. Podendo assim acessar esses resultados depois
