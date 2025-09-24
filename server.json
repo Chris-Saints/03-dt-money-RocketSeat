@@ -55,6 +55,14 @@
       "type": "outcome",
       "createdAt": "2025-09-24T00:58:44.680Z",
       "id": 7
+    },
+    {
+      "description": "Teste",
+      "price": 100,
+      "category": "Supresa",
+      "type": "income",
+      "createdAt": "2025-09-24T01:05:17.823Z",
+      "id": 8
     }
   ]
 }
