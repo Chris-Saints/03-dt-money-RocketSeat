@@ -1,33 +1,60 @@
 {
-    "transactions": [
-        {
-            "id": 1,
-            "description": "Desenvolvimento de site",
-            "type": "income",
-            "category": "Venda",
-            "price": 14000,
-            "createdAt": "2025-09-23T14:16:59.183Z"
-
-        },
-
-        {
-            "id": 2,
-            "description": "Hamburguer",
-            "type": "outcome",
-            "category": "Alimentação",
-            "price": 6000,
-            "createdAt": "2025-10-23T14:16:59.183Z"
-
-        },
-
-        {
-            "id": 3,
-            "description": "Mensalidade",
-            "type": "outcome",
-            "category": "Escola",
-            "price": 6000,
-            "createdAt": "2025-11-23T14:16:59.183Z"
-
-        }
-    ]
+  "transactions": [
+    {
+      "id": 1,
+      "description": "Desenvolvimento de site",
+      "type": "income",
+      "category": "Venda",
+      "price": 14000,
+      "createdAt": "2025-09-23T14:16:59.183Z"
+    },
+    {
+      "id": 2,
+      "description": "Hamburguer",
+      "type": "outcome",
+      "category": "Alimentação",
+      "price": 6000,
+      "createdAt": "2025-10-23T14:16:59.183Z"
+    },
+    {
+      "id": 3,
+      "description": "Mensalidade",
+      "type": "outcome",
+      "category": "Escola",
+      "price": 6000,
+      "createdAt": "2025-11-23T14:16:59.183Z"
+    },
+    {
+      "description": "Desenvolvimento de App",
+      "price": 10000,
+      "category": "Venda",
+      "type": "income",
+      "createdAt": "2025-09-24T00:40:47.521Z",
+      "id": 4
+    },
+    {
+      "description": "Bambalalão",
+      "price": 4000,
+      "category": "Diversão",
+      "type": "outcome",
+      "createdAt": "2025-09-24T00:45:20.320Z",
+      "id": 5
+    },
+    {
+      "description": "Herança",
+      "price": 10000,
+      "category": "Receita",
+      "type": "income",
+      "createdAt": "2025-09-24T00:46:27.280Z",
+      "id": 6
+    },
+    {
+      "description": "Io-Io",
+      "price": 10,
+      "category": "Diversão",
+      "type": "outcome",
+      "createdAt": "2025-09-24T00:58:44.680Z",
+      "id": 7
+    }
+  ]
 }

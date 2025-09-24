@@ -4,6 +4,8 @@ import { ArrowCircleDown, ArrowCircleUp, X } from 'phosphor-react'
 import * as z from 'zod';
 import { Controller, useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useContext } from 'react';
+import { TransactionsContext } from '../../contexts/TransactionsContext';
 
 const newTransactionFormSchema = z.object({
     description: z.string(),
@@ -17,20 +19,31 @@ type NewTransactionFormInputs = z.infer<typeof newTransactionFormSchema>
 //O processo é Criar um objeto com o zod ditando como deve ser e quais informações deve ter. Depois criar um Type dessa variavel e depois trazer as propriedades do use form com zodResolver e criar uma função onde ele puxa todas as informacoes salvando elas com o register e podendo ser acessadas no return da função
 
 export function NewTransactionModal() {
+    const { createTransaction } = useContext(TransactionsContext)
+
     const {
         control, 
         register,
         handleSubmit,
-        formState: { isSubmitting }
+        formState: { isSubmitting },
+        reset,
 
      } = useForm<NewTransactionFormInputs>({
         resolver: zodResolver(newTransactionFormSchema)
     })
 
-    async function handleCreateNEwTransaction(data: NewTransactionFormInputs) {
-        await new Promise(resolve => setTimeout(resolve, 2000));
+    async function handleCreateNewTransaction(data: NewTransactionFormInputs) {
+         const { description, price, category, type } = data
 
-        console.log(data);
+        await createTransaction({
+            description,
+            price,
+            category,
+            type,
+        })
+        
+
+        reset();
     }
 
 
@@ -45,7 +58,7 @@ export function NewTransactionModal() {
                     <X size={24}/>
                 </CloseButton>
 
-                <form onSubmit={handleSubmit(handleCreateNEwTransaction)}>
+                <form onSubmit={handleSubmit(handleCreateNewTransaction)}>
                     <input 
                         type='text' 
                         placeholder='Descrição'
