@@ -12,6 +12,7 @@ interface Transaction {
 
 interface TransactionContextType{
     transactions: Transaction[];
+    fetchTransactions: (query?: string) => Promise<void>
 }
 
 interface TransactionsProviderProps {
@@ -33,8 +34,14 @@ export function TransactionsProvider({children}: TransactionsProviderProps) {
     
     
         //Uma função assincrona para recuperar os dados que estão na back-end e transforma-los em uma variavel. Depois adicionar eles ao useState que guarda as informações das transações
-        async function loadTransactions() {
-            const response = await fetch('http://localhost:3000/transactions')
+        async function fetchTransactions(query?: string) {
+            const url = new URL('http://localhost:3000/transactions');
+
+            if(query) {
+                url.searchParams.append('q', query);
+            }
+
+            const response = await fetch(url)
             const data = await response.json();
     
             setTransactions(data)
@@ -43,12 +50,16 @@ export function TransactionsProvider({children}: TransactionsProviderProps) {
     
     
       useEffect(() => {
-            loadTransactions();
+            fetchTransactions();
         }, [])
     
         
     return(
-        <TransactionsContext.Provider value={{ transactions }}>
+        <TransactionsContext.Provider value={{ 
+            transactions,
+            fetchTransactions,
+            
+        }}>
             {children}
         </TransactionsContext.Provider>
     )
